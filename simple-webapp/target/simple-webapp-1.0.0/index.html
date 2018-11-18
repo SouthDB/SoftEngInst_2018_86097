@@ -1,0 +1,76 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="jquery-3.3.1.min.js"></script>
+</head>
+
+<body>
+	<div id="headPart">
+		<h1>WPM Professionelle Java Entwicklung</h1>
+		<h2>Software Engineering Instrumente</h2>
+		<h2>Daniel Backes 86097 - WS 2018/2019 HS Albstadt Sigmaringen</h2>
+	</div>
+	<div id="fibPart">
+		<h1 id="calcH">Fibonacci Sequence</h1>
+		<form id="fibForm" method="post" action="calculator">
+			n = <input class="input" type="number" name="n"><br> <input
+				type="hidden" name="mode" value="fibonacci"> <input
+				class="btn" type="submit" value="Enter">
+			<p id="fibResult"></p>
+		</form>
+	</div>
+	<div id="powerTwoPart">
+		<h1 id="calcH">Power of Two (2^n)</h1>
+		<form id="ptForm" method="post" action="calculator">
+			n = <input class="input" type="number" name="n"><br> <input
+				type="hidden" name="mode" value="powTwo"> <input
+				class="btn" type="submit" value="Enter">
+				<p id="ptResult"></p>
+		</form>
+	</div>
+</body>
+
+<script type="text/javascript">
+	var frm1 = $("#fibForm");
+
+	frm1.submit(function(e) {
+		e.preventDefault();
+
+		$.ajax({
+			type : frm1.attr('method'),
+			url : frm1.attr('action'),
+			data : frm1.serialize(),
+			success : function(data) {
+				console.log('Submission was successful.');
+				console.log(data);
+				$("#fibResult").html(data.result);
+			},
+			error : function(data) {
+				console.log('An error occurred.');
+				console.log(data);
+			},
+		});
+	});
+
+	var frm2 = $("#ptForm");
+
+	frm2.submit(function(e) {
+		e.preventDefault();
+
+		$.ajax({
+			type : frm2.attr('method'),
+			url : frm2.attr('action'),
+			data : frm2.serialize(),
+			success : function(data) {
+				console.log('Submission was successful.');
+				console.log(data);
+				$("#ptResult").html(data.result);
+			},
+			error : function(data) {
+				console.log('An error occurred.');
+				console.log(data);
+			},
+		});
+	});
+</script>
+</html>
