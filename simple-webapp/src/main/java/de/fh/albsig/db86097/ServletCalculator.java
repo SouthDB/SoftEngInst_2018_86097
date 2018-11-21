@@ -46,7 +46,7 @@ public class ServletCalculator extends HttpServlet {
 			PowerOfTwo pt = new PowerOfTwo();
 			result = pt.powTwo(n);
 
-			if (result <= 0) { // result > range from long -> return 0
+			if (result < 0) {
 				reqResult = "Input Error";
 			} else {
 				reqResult = "Result = " + Long.toString(result);

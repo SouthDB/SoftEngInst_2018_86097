@@ -10,6 +10,9 @@ public class PowerOfTwo {
 			for (int i = 1; i <= n; i++) {
 				result *= 2;
 			}
+			if (result == 0) { // out of range from long
+				result = -1;
+			}
 			return result;
 		}
 	}
