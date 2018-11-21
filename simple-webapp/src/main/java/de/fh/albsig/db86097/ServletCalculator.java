@@ -31,7 +31,6 @@ public class ServletCalculator extends HttpServlet {
 			nfe.printStackTrace();
 			reqN = null;
 		}
-
 		// start calculator mode
 		if (mode.equals("fibonacci") && reqN != null) {
 			Fibonacci fib = new Fibonacci();
@@ -60,7 +59,6 @@ public class ServletCalculator extends HttpServlet {
 		forJsonObj.put("result", reqResult);
 
 		JSONObject jobj = new JSONObject(forJsonObj);
-
 		response.setContentType("application/json; charset=utf-8");
 		PrintWriter out = response.getWriter();
 		out.write(jobj.toString());
