@@ -57,33 +57,6 @@
 						<executable>C:\Prog_Lang\Java\jdk1.8.0_191\bin\javac</executable>
 					</configuration>
 				</plugin>
-
-				<plugin>
-					<!-- CheckStyle Formatter -->
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-checkstyle-plugin</artifactId>
-					<version>3.0.0</version>
-				</plugin>
-				<plugin>
-					<!-- PMD Report with PMD Code Analyse Tool -->
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-pmd-plugin</artifactId>
-					<version>3.11.0</version>
-					<configuration>
-						<linkXref>true</linkXref>
-						<sourceEncoding>utf-8</sourceEncoding>
-						<minimumTokens>100</minimumTokens>
-						<targetJdk>1.5</targetJdk>
-						<excludes>
-							<!-- run with lifecycle -->
-							<exclude>**/*Bean.java</exclude>
-							<exclude>**/generated/*.java</exclude>
-						</excludes>
-						<excludeRoots>
-							<excludeRoot>target/generated-sources/stubs</excludeRoot>
-						</excludeRoots>
-					</configuration>
-				</plugin>
 				<plugin>
 					<!-- plugin for site generation with java 1.8 -->
 					<groupId>org.apache.maven.plugins</groupId>
@@ -139,12 +112,55 @@
 		</pluginManagement>
 	</build>
 
+	<reporting>
+		<plugins>
+			<plugin>
+				<!-- CheckStyle Formatter -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.0.0</version>
+			</plugin>
+			<plugin>
+				<!-- PMD Report with PMD Code Analyse Tool -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.11.0</version>
+				<configuration>
+					<linkXref>true</linkXref>
+					<sourceEncoding>utf-8</sourceEncoding>
+					<minimumTokens>100</minimumTokens>
+					<targetJdk>1.5</targetJdk>
+					<excludes>
+						<!-- run with lifecycle -->
+						<exclude>**/*Bean.java</exclude>
+						<exclude>**/generated/*.java</exclude>
+					</excludes>
+					<excludeRoots>
+						<excludeRoot>target/generated-sources/stubs</excludeRoot>
+					</excludeRoots>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- Cross reference project sources for reporting -->
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jxr-plugin</artifactId>
+				<version>2.3</version>
+			</plugin>
+		</plugins>
+	</reporting>
+
 	<dependencies>
 		<dependency>
-			<!-- required Artifacts -->
+			<!-- required Artifact -->
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8.1</version>
+		</dependency>
+		<dependency>
+			<!-- Logger Framework -->
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
 		</dependency>
 		<dependency>
 			<!-- allow write tests and extensions with jUnit5 -->

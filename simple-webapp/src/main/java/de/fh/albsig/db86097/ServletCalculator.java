@@ -10,11 +10,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 import org.json.simple.JSONObject;
 
 /** Servlet to handle requests for Calculator. */
 
 public class ServletCalculator extends HttpServlet {
+
+    /** Logger for Exceptions */
+    final static Logger logger = Logger.getLogger(HttpServlet.class);
 
     /**
      * handle post request for Caclculator and start fibonacci or PowerOfTwo
@@ -41,6 +45,7 @@ public class ServletCalculator extends HttpServlet {
         try {
             n = Integer.parseInt(reqN);
         } catch (NumberFormatException nfe) {
+            logger.error("Parse client variable n goes wrong, nfe");
             nfe.printStackTrace();
             reqN = null;
         }
