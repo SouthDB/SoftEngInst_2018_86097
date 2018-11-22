@@ -57,6 +57,33 @@
 						<executable>C:\Prog_Lang\Java\jdk1.8.0_191\bin\javac</executable>
 					</configuration>
 				</plugin>
+
+				<plugin>
+					<!-- CheckStyle Formatter -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-checkstyle-plugin</artifactId>
+					<version>3.0.0</version>
+				</plugin>
+				<plugin>
+					<!-- PMD Report with PMD Code Analyse Tool -->
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-pmd-plugin</artifactId>
+					<version>3.11.0</version>
+					<configuration>
+						<linkXref>true</linkXref>
+						<sourceEncoding>utf-8</sourceEncoding>
+						<minimumTokens>100</minimumTokens>
+						<targetJdk>1.5</targetJdk>
+						<excludes>
+							<!-- run with lifecycle -->
+							<exclude>**/*Bean.java</exclude>
+							<exclude>**/generated/*.java</exclude>
+						</excludes>
+						<excludeRoots>
+							<excludeRoot>target/generated-sources/stubs</excludeRoot>
+						</excludeRoots>
+					</configuration>
+				</plugin>
 				<plugin>
 					<!-- plugin for site generation with java 1.8 -->
 					<groupId>org.apache.maven.plugins</groupId>
@@ -73,8 +100,8 @@
 						</descriptors>
 					</configuration>
 					<executions>
-						<!--run building Assembly while lifecycle -->
 						<execution>
+							<!--run building Assembly while lifecycle -->
 							<id>make-assembly</id> <!-- this is used for inheritance merges -->
 							<phase>package</phase> <!-- bind to the packaging phase -->
 							<goals>
@@ -114,7 +141,7 @@
 
 	<dependencies>
 		<dependency>
-		<!-- required Artifacts -->
+			<!-- required Artifacts -->
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.8.1</version>
