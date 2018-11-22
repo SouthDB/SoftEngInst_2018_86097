@@ -34,7 +34,7 @@ body {
 }
 
 #headPart {
-	display: inline-block;
+	box-sizing: border-box;
 	background-color: #17252A;
 	color: rgb(147, 152, 153);
 	width: 100%;
@@ -45,23 +45,23 @@ body {
 }
 
 #fibPart {
-	display: inline-block;
+	box-sizing: border-box;
 	background-color: #2B7A78;
 	color: rgb(255, 255, 255);
 	text-align: center;
 	font-weight: bold;
 	margin: 0%;
-	padding: 3%;
+	padding: 2%;
 	width: 100%;
 }
 
 #powerTwoPart {
-	display: inline-block;
+   box-sizing: border-box;
 	background-color: #3AAFA9;
 	color: rgb(255, 255, 255);
 	text-align: center;
 	font-weight: bold;
 	margin: 0%;
-	padding: 3%;
+	padding: 2%;
 	width: 100%;
 }
