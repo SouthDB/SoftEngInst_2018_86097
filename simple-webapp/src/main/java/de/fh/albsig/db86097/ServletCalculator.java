@@ -18,16 +18,18 @@ import org.json.simple.JSONObject;
 
 public class ServletCalculator extends HttpServlet {
 
-    /** Logger for Exceptions */
-    final static Logger logger = Logger.getLogger(HttpServlet.class);
+    /** Logger for Exceptions. */
+    static final Logger LOGGER = Logger.getLogger(HttpServlet.class);
+
+    /** HTTP Server Based Error. */
+    public static final int SERVER_BASED = 500;
 
     /**
      * handle post request for Calculator and start fibonacci or PowerOfTwo
      * mode.
      * 
-     * @param request       include mode and n from client
-     * @param response      send result or calculate error to client
-     * @param numberContain check n only contains numbers
+     * @param request  include mode and n from client
+     * @param response send result or calculate error to client
      * @throws ServletException Servlet error for client
      * @throws IOException      failed or interrupted I/O operations
      */
@@ -51,7 +53,7 @@ public class ServletCalculator extends HttpServlet {
             try {
                 n = Integer.parseInt(reqN);
             } catch (NumberFormatException nfe) {
-                logger.error("Parse client variable n goes wrong", nfe);
+                LOGGER.error("Parse client variable n goes wrong", nfe);
                 reqN = null;
             }
         }
@@ -80,8 +82,8 @@ public class ServletCalculator extends HttpServlet {
                 reqResult = "Parameter Error";
             }
         } catch (Exception ex) {
-            logger.error("Calculate mode goes wrong", ex);
-            response.sendError(500);
+            LOGGER.error("Calculate mode goes wrong", ex);
+            response.sendError(SERVER_BASED);
         }
 
         // Json Response
@@ -97,8 +99,8 @@ public class ServletCalculator extends HttpServlet {
             out.flush();
             out.close();
         } catch (Exception ex) {
-            logger.error("JSON Response goes wrong", ex);
-            response.sendError(500);
+            LOGGER.error("JSON Response goes wrong", ex);
+            response.sendError(SERVER_BASED);
         }
 
     }
