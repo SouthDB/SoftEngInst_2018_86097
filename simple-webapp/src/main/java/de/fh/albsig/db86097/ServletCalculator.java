@@ -56,6 +56,8 @@ public class ServletCalculator extends HttpServlet {
                 LOGGER.error("Parse client variable n goes wrong", nfe);
                 reqN = null;
             }
+        } else if (!numberContain) {
+            reqN = null;
         }
 
         try {
