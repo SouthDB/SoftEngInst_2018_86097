@@ -33,7 +33,8 @@ public class ServletCalculator extends HttpServlet {
      * @throws ServletException Servlet error for client
      * @throws IOException      failed or interrupted I/O operations
      */
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public final void doPost(final HttpServletRequest request,
+            final HttpServletResponse response)
             throws ServletException, IOException {
 
         // read request Parameter
